@@ -1,0 +1,31 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap')
+
+.button-base
+    font-family: 'Noto Sans JP', sans-serif
+    border-radius: 16px
+    background-color: #F2E205
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+    border: none
+    opacity: .9
+
+.button-base:hover
+    transition: .25s ease
+    opacity: 1
+    background-color: #F2CB05
+    filter: drop-shadow(2px 6px 4px rgba(0, 0, 0, 0.25))
+
+.button-base:hover:after
+    transition: .25s ease
+
+.button-base:active
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25))
+    border: none
+    outline: none
+
+.button-base:focus
+    outline: none
+
+.button-sm
+    @extend .button-base
+    padding: 8px 20px 8px 20px

@@ -125,6 +125,46 @@
           }
         }
       }
+    },
+    "design-kit": {
+      "projectType": "library",
+      "root": "projects/design-kit",
+      "sourceRoot": "projects/design-kit/src",
+      "prefix": "rb",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/design-kit/tsconfig.lib.json",
+            "project": "projects/design-kit/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/design-kit/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/design-kit/src/test.ts",
+            "tsConfig": "projects/design-kit/tsconfig.spec.json",
+            "karmaConfig": "projects/design-kit/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/design-kit/tsconfig.lib.json",
+              "projects/design-kit/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "runbuddies"
