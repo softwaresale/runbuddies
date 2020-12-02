@@ -1,5 +1,5 @@
 
-@use '../styles/variables'
+@use '../variables'
 
 .button-base
     font-family: 'Noto Sans JP', sans-serif
@@ -26,3 +26,12 @@
 .button-base:focus
     outline: none
     background-color: #F2CB05
+
+.button-sm
+    @extend .button-base
+    padding: 8px 20px 8px 20px
+
+.button-md
+    @extend .button-base
+    padding: 8px 20px 8px 20px
+    height: 40px

@@ -20,10 +20,6 @@
       "dom"
     ],
     "paths": {
-      "design-kit": [
-        "dist/design-kit/design-kit",
-        "dist/design-kit"
-      ],
     }
   },
   "angularCompilerOptions": {

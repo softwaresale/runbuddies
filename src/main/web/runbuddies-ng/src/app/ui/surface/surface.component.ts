@@ -1,10 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'rb-surface, div[rb-surface]',
+  selector: 'app-surface, div[app-surface]',
   templateUrl: './surface.component.html',
   styleUrls: ['./surface.component.sass'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SurfaceComponent implements OnInit {
 
@@ -12,7 +12,7 @@ export class SurfaceComponent implements OnInit {
   title?: string;
 
   @Input()
-  showAction: boolean | undefined = false;
+  showAction?: boolean = false;
 
   @Input()
   actionText?: string;
@@ -21,5 +21,4 @@ export class SurfaceComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

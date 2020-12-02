@@ -1,0 +1,6 @@
+
+<div class="surface">
+    <h3>{{ title | titlecase }}</h3>
+    <ng-content></ng-content>
+    <button *ngIf="showAction" app-button size="md" class="action-btn">{{ actionText }}</button>
+</div>
