@@ -14,6 +14,9 @@ export class SurfaceComponent implements OnInit {
   @Input()
   showAction: boolean | undefined = false;
 
+  @Input()
+  actionText?: string;
+
   constructor() { }
 
   ngOnInit(): void {
