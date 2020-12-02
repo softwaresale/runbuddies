@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { ButtonModule } from 'design-kit';
+import { ButtonModule, SurfaceModule } from 'design-kit';
 
 @NgModule({
   declarations: [
@@ -14,6 +14,7 @@ import { ButtonModule } from 'design-kit';
     BrowserModule,
     AppRoutingModule,
     ButtonModule,
+    SurfaceModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
