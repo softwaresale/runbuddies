@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ButtonModule } from './ui/button/button.module';
 import { SurfaceModule } from './ui/surface/surface.module';
 import { CardModule } from './ui/card/card.module';
+import { ToolbarModule } from './ui/toolbar/toolbar.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { CardModule } from './ui/card/card.module';
     ButtonModule,
     SurfaceModule,
     CardModule,
+    ToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

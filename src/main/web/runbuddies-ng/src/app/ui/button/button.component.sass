@@ -1,37 +1,46 @@
 
 @use '../variables'
+@use '../themes/blue-yellow'
 
-.button-base
+@function set-text-color($color)
+    @debug lightness($color)
+    @if (lightness($color) > 40)
+        @return #000000 // Lighter backgorund, return dark color
+    @else
+        @return #ffffff // Darker background, return light color
+
+=button-base($color, $scale)
     font-family: 'Noto Sans JP', sans-serif
     border-radius: 16px
-    background-color: #F2E205
+    background-color: $color
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
     border: none
     opacity: .9
+    color: set-text-color($color)
 
-.button-base:hover
-    transition: .25s ease
-    opacity: 1
-    background-color: #F2CB05
-    filter: drop-shadow(2px 6px 4px rgba(0, 0, 0, 0.25))
+    &:hover
+        transition: .25s ease
+        opacity: 1
+        background-color: darken($color, $scale)
+        filter: drop-shadow(2px 6px 4px rgba(0, 0, 0, 0.25))
 
-.button-base:hover:after
-    transition: .25s ease
+    &:hover:after
+        transition: .25s ease
 
-.button-base:active
-    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25))
-    border: none
-    outline: none
+    &:active
+        filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25))
+        border: none
+        outline: none
+        background-color: darken($color, $scale)
 
-.button-base:focus
-    outline: none
-    background-color: #F2CB05
+    &:focus
+        outline: none
 
 .button-sm
-    @extend .button-base
+    +button-base(blue-yellow.$accent-color, 2.5%)
     padding: 8px 20px 8px 20px
 
 .button-md
-    @extend .button-base
+    +button-base(blue-yellow.$accent-color, 2.5%)
     padding: 8px 20px 8px 20px
     height: 40px
