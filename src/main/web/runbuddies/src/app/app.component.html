@@ -1,0 +1,11 @@
+
+<div class="page-container">
+  <div class="mat-elevation-z5 toolbar-container">
+    <mat-toolbar color="primary">
+      <span>Run Buddies</span>
+    </mat-toolbar>
+  </div>
+  <div [class.page-content-container--mobile]="isMobile" [class.page-content-container--desktop]="!isMobile" [@routerAnimations]="prepareOutlet(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
+  </div>
+</div>

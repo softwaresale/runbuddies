@@ -1,0 +1,27 @@
+@use '../custom-theme'
+
+@import '~@angular/material/theming'
+
+.page-container
+  display: flex
+  flex-flow: column
+  height: 100%
+
+  %page-content-container
+    flex: 1 1 auto
+    background-color: lighten(mat-color(custom-theme.$runbuddies-primary), 35%)
+    margin-top: 56px
+
+  .page-content-container--desktop
+    @extend %page-content-container
+    padding: 16px 16px 48px 16px
+
+  .page-content-container--mobile
+    @extend %page-content-container
+    padding: 16px 8px 48px 8px
+
+.toolbar-container
+  display: block
+  position: fixed
+  width: 100%
+  z-index: 1

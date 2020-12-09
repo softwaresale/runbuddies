@@ -1,0 +1,26 @@
+.person-card {
+  border-radius: 16px;
+  margin: 16px auto;
+  width: 300px; }
+  .person-card .person-action-button--half, .person-card .person-action-button--full {
+    border-radius: 16px; }
+  .person-card .person-action-button--half {
+    width: 50%; }
+  .person-card .person-action-button--full {
+    width: 100%; }
+  .person-card .button-container {
+    display: flex;
+    flex-direction: row; }
+  .person-card .info-key {
+    font-weight: lighter;
+    padding: 4px; }
+  .person-card .info-value {
+    font-weight: bold;
+    padding: 4px; }
+  .person-card .user-image {
+    object-fit: cover;
+    margin: 8px;
+    border-radius: 8px;
+    border: 0.5px solid black; }
+
+/*# sourceMappingURL=user-card.component.css.map */
