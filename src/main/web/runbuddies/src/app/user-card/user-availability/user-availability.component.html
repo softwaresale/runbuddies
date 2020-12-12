@@ -1,5 +1,4 @@
 <div>
-  <h5>Availability</h5>
   <mat-chip-list multiple (change)="onChipListChange($event)">
     <mat-chip *ngFor="let day of daysOfWeek"
               [color]="currentDay === day ? 'primary' : 'accent'"
@@ -14,4 +13,9 @@
               [selected]="timeIsSelected(currentDay, idx)"
     >{{ time | titlecase }}</mat-chip>
   </mat-chip-list>
+  <div *ngIf="showTimes" style="margin-top: 4px">
+    <mat-chip-list>
+      <mat-chip *ngFor="let time of getTimesForDay(currentDay)">{{ time }}</mat-chip>
+    </mat-chip-list>
+  </div>
 </div>

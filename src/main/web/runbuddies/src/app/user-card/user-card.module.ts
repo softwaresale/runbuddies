@@ -16,6 +16,6 @@ import { UserAvailabilityComponent } from './user-availability/user-availability
     MatButtonModule,
     MatChipsModule,
   ],
-  exports: [UserCardComponent]
+  exports: [UserCardComponent, UserAvailabilityComponent]
 })
 export class UserCardModule { }

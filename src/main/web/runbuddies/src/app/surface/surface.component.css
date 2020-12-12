@@ -6,6 +6,8 @@
   background-color: #f4f4f4;
   width: 80%;
   margin: auto; }
+  .surface--desktop .content {
+    height: 90%; }
   .surface--desktop .block-level-btn {
     position: absolute;
     left: 16px;
@@ -30,6 +32,8 @@
   padding: 16px;
   background-color: #f4f4f4;
   width: unset; }
+  .surface--mobile .content {
+    height: 90%; }
   .surface--mobile .block-level-btn {
     position: absolute;
     left: 16px;

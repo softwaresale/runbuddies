@@ -3,7 +3,70 @@
   <div appSurfaceHeader>
     <h2>Charlie Sale</h2>
   </div>
-  <div>
-
+  <div class="profile-content">
+    <div class="left-box">
+      <div>
+        <h2>Running Info</h2>
+        <table class="info-table">
+          <tr>
+            <td class="header">Mile Pace</td>
+            <td class="value">8:30 mi/min</td>
+          </tr>
+          <tr>
+            <td class="header">Intensity</td>
+            <td class="value">MEDIUM</td>
+          </tr>
+          <tr>
+            <td class="header">Average Distance</td>
+            <td class="value">6 mi</td>
+          </tr>
+        </table>
+      </div>
+      <mat-divider></mat-divider>
+      <div>
+        <h2>Availability</h2>
+        <app-user-availability [availability]="availability" [showTimes]="true"></app-user-availability>
+      </div>
+      <mat-divider></mat-divider>
+      <div>
+        <h2>Schedule a Run</h2>
+        <div class="schedule-btn-box">
+          <button mat-raised-button color="primary">SCHEDULE</button>
+          <button mat-stroked-button color="primary">CONTACT</button>
+        </div>
+      </div>
+    </div>
+    <div class="right-box">
+      <div>
+        <img class="profile-picture"
+             src="{{ picLink }}"
+             alt="Profile Picture"
+        />
+        <h2>Personal Info</h2>
+        <h3 style="font-weight: bold">Charlie Sale (@runnersale)</h3>
+        <p style="margin-right: 8px">
+          This is my bio. I've been trying to get into running recently. It's pretty hard to run by yourself. So, I'm on
+          this app looking for other people to run with. Let me know if you can run with me.
+        </p>
+      </div>
+      <mat-divider></mat-divider>
+      <div>
+        <h2>Stats</h2>
+        <table class="info-table">
+          <tr>
+            <td>Longest Run</td>
+            <td>10 mi</td>
+          </tr>
+          <tr>
+            <td>Fastest Pace</td>
+            <td>5 mi/min</td>
+          </tr>
+          <tr>
+            <td>Consecutive Runs</td>
+            <td>8 days</td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 </app-surface>

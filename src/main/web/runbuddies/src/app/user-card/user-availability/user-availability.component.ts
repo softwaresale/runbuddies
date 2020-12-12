@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatChipListChange } from '@angular/material/chips';
+import { ObjectUnsubscribedError } from 'rxjs';
 
 @Component({
   selector: 'app-user-availability',
@@ -12,13 +13,17 @@ export class UserAvailabilityComponent implements OnInit {
   timesOfDay = ['morning', 'afternoon', 'evening'];
 
   @Input()
-  availability: { [day: string]: number[] } = {};
+  availability: { [day: string]: { timesOfDay: number[], times: string[] } } = {};
 
   currentDay?: string;
+
+  @Input()
+  showTimes = false;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.currentDay = Object.keys(this.availability)[0];
   }
 
   onChipListChange(event: MatChipListChange): void {
@@ -30,6 +35,10 @@ export class UserAvailabilityComponent implements OnInit {
   }
 
   timeIsSelected(day: string | undefined, time: number): boolean {
-    return this.availability[day ?? '']?.includes(time);
+    return this.availability[day ?? '']?.timesOfDay?.includes(time);
+  }
+
+  getTimesForDay(day: string | undefined): string[] {
+    return this.availability[day ?? '']?.times ?? [];
   }
 }
