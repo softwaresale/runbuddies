@@ -15,7 +15,7 @@
   </mat-chip-list>
   <div *ngIf="showTimes" style="margin-top: 4px">
     <mat-chip-list>
-      <mat-chip *ngFor="let time of getTimesForDay(currentDay)">{{ time }}</mat-chip>
+      <mat-chip *ngFor="let time of getTimesForDay(currentDay)" (click)="timeClicked(time)">{{ time }}</mat-chip>
     </mat-chip-list>
   </div>
 </div>

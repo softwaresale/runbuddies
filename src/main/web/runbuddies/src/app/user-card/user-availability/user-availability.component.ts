@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatChipListChange } from '@angular/material/chips';
-import { ObjectUnsubscribedError } from 'rxjs';
 
 @Component({
   selector: 'app-user-availability',
@@ -19,6 +18,9 @@ export class UserAvailabilityComponent implements OnInit {
 
   @Input()
   showTimes = false;
+
+  @Output()
+  timeClick = new EventEmitter<Date>();
 
   constructor() { }
 
@@ -40,5 +42,24 @@ export class UserAvailabilityComponent implements OnInit {
 
   getTimesForDay(day: string | undefined): string[] {
     return this.availability[day ?? '']?.times ?? [];
+  }
+
+  timeClicked(timeStr: string): void {
+    const timeSplit = /([0-9]{1,2}):([0-9]{2})(AM|PM)/;
+    const results = timeSplit.exec(timeStr);
+    if (results && this.currentDay) {
+      // Set hour info for date
+      const hours = results[3] === 'AM' ? Number.parseInt(results[1], 10) : Number.parseInt(results[1], 10) + 12;
+      const minutes = Number.parseInt(results[2], 10);
+      let date = new Date();
+      date = new Date(date.setHours(hours, minutes, 0));
+
+      // Set date info
+      const dayOfWeek = this.daysOfWeek.indexOf(this.currentDay);
+      date.setDate(date.getDate() + (dayOfWeek + 7 - date.getDay()) % 7);
+
+      // Emit the date
+      this.timeClick.emit(date);
+    }
   }
 }

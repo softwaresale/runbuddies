@@ -1,6 +1,9 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { ScheduleSheetComponent } from './schedule-sheet/schedule-sheet.component';
+import { ScrollStrategyOptions } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-profile',
@@ -30,7 +33,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }
   };
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private bottomSheet: MatBottomSheet,
+  ) { }
 
   ngOnInit(): void {
     this.sub = this.breakpointObserver.observe(Breakpoints.Handset).subscribe(state => {
@@ -40,5 +46,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.sub?.unsubscribe();
+  }
+
+  schedule(): void {
+    this.bottomSheet.open(ScheduleSheetComponent, {
+      ariaLabel: 'Schedule a run',
+      panelClass: 'schedule-sheet-panel',
+      data: this.availability,
+    });
   }
 }
