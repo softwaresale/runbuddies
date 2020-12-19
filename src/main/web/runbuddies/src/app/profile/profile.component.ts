@@ -55,4 +55,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
       data: this.availability,
     });
   }
+
+  get profilePicUrl(): string {
+    return `url(${this.picLink})`;
+  }
 }

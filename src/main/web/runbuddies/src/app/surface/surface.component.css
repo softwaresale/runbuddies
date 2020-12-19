@@ -15,15 +15,18 @@
     width: calc(100% - 32px);
     border-radius: 16px;
     height: 48px; }
-  .surface--desktop .action-btn-box {
+  .surface--desktop .action-btn-box, .surface--desktop .action-btn-box--mobile {
     position: absolute;
     bottom: 16px;
     left: 16px;
     width: calc(100% - 32px); }
-    .surface--desktop .action-btn-box button {
+    .surface--desktop .action-btn-box button, .surface--desktop .action-btn-box--mobile button {
       border-radius: 16px;
       height: 48px;
       width: 100%; }
+  .surface--desktop .action-btn-box--mobile {
+    position: fixed;
+    bottom: 32px; }
 
 .surface--mobile {
   position: relative;
@@ -41,14 +44,17 @@
     width: calc(100% - 32px);
     border-radius: 16px;
     height: 48px; }
-  .surface--mobile .action-btn-box {
+  .surface--mobile .action-btn-box, .surface--mobile .action-btn-box--mobile {
     position: absolute;
     bottom: 16px;
     left: 16px;
     width: calc(100% - 32px); }
-    .surface--mobile .action-btn-box button {
+    .surface--mobile .action-btn-box button, .surface--mobile .action-btn-box--mobile button {
       border-radius: 16px;
       height: 48px;
       width: 100%; }
+  .surface--mobile .action-btn-box--mobile {
+    position: fixed;
+    bottom: 32px; }
 
 /*# sourceMappingURL=surface.component.css.map */

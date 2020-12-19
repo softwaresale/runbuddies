@@ -1,4 +1,4 @@
-import { Component, Directive, Input, OnInit } from '@angular/core';
+import { Component, Directive, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Directive({
   selector: 'appSurfaceHeader, div[appSurfaceHeader], span[appSurfaceHeader], h1[appSurfaceHeader], h2[appSurfaceHeader]',
@@ -16,6 +16,10 @@ export class SurfaceComponent implements OnInit {
   mobile = false;
   @Input()
   actionText?: string;
+  @Input()
+  hideHeader = false;
+  @Output()
+  actionClick = new EventEmitter();
 
   constructor() { }
 

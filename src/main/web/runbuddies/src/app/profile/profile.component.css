@@ -1,26 +1,20 @@
 .profile-content, .profile-content--mobile {
   height: 100%;
   display: flex;
-  flex-direction: row-reverse; }
+  flex-direction: row; }
 
 .profile-content--mobile {
-  flex-direction: column-reverse; }
+  flex-direction: column;
+  margin-bottom: 8px; }
 
-.left-box, .left-box--mobile {
+.profile-content-box, .profile-content-box--mobile {
   flex-basis: 50%;
   padding: 16px; }
-  .left-box div, .left-box--mobile div {
+  .profile-content-box div, .profile-content-box--mobile div {
     padding: 8px;
     margin-bottom: 16px; }
 
-.left-box--mobile {
-  padding: 0; }
-
-.right-box, .right-box--mobile {
-  flex-basis: 50%;
-  padding: 16px; }
-
-.right-box--mobile {
+.profile-content-box--mobile {
   padding: 0; }
 
 .schedule-btn-box, .schedule-btn-box--mobile {
@@ -66,5 +60,25 @@
 .extended-fab-button--mobile {
   position: sticky;
   width: 100%; }
+
+.mobile-user-info {
+  position: relative;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px; }
+  .mobile-user-info .mobile-user-info--text-container {
+    position: absolute;
+    background-color: white;
+    left: 0;
+    bottom: 0;
+    width: calc(100% - 16px);
+    padding: 8px;
+    opacity: 75%;
+    border-radius: 0 0 16px 16px; }
+  .mobile-user-info .mobile-user-info--text {
+    opacity: 100%;
+    font-weight: bold;
+    margin: 0; }
 
 /*# sourceMappingURL=profile.component.css.map */

@@ -1,11 +1,11 @@
 
 <div [class.surface--desktop]="!mobile" [class.surface--mobile]="mobile" class="mat-elevation-z5">
-  <ng-content select="[appSurfaceHeader]"></ng-content>
-  <mat-divider style="margin-bottom: 8px"></mat-divider>
+  <ng-content select="[appSurfaceHeader]" *ngIf="!hideHeader"></ng-content>
+  <mat-divider style="margin-bottom: 8px" *ngIf="!hideHeader"></mat-divider>
   <div class="content">
     <ng-content></ng-content>
   </div>
-  <div class="action-btn-box">
-    <button mat-raised-button color="primary" *ngIf="actionText">{{ actionText | uppercase }}</button>
+  <div [class.action-btn-box]="!mobile" [class.action-btn-box--mobile]="mobile" *ngIf="actionText">
+    <button mat-raised-button color="primary" (click)="actionClick.emit()">{{ actionText | uppercase }}</button>
   </div>
 </div>
