@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AACA,eAAe;EACb,MAAM,EAAE,IAAI;EAEZ,8BAAc;IACZ,KAAK,EAAE,IAAI;IACX,UAAU,EAAE,IAAI;IAChB,aAAa,EAAE,IAAI;IACnB,MAAM,EAAE,IAAI;EAEd,mBAAG;IACD,MAAM,EAAE,KAAK",
-"sources": ["schedule-sheet.component.sass"],
-"names": [],
-"file": "schedule-sheet.component.css"
-}

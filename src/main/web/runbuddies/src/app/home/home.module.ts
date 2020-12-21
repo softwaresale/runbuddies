@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-import { SurfaceModule } from '../surface/surface.module';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { UserCardModule } from '../user-card/user-card.module';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -13,9 +14,11 @@ import { UserCardModule } from '../user-card/user-card.module';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    SurfaceModule,
+    UserCardModule,
+
     MatGridListModule,
-    UserCardModule
+    LayoutModule,
+    MatButtonModule,
   ]
 })
 export class HomeModule { }

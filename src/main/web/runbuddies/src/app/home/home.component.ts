@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -9,35 +10,19 @@ import { Subscription } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
 
-  charliePic = 'https://lh3.googleusercontent.com/wOnBqLiJIVp_S8uEO1gogJDDu9FStH_Ah6X7uWhkp57BJbswjzKtggWrAPv4J_hjdiaeZJPKVNN7qKMcn9S2TV4sifZim6bxz1sHyAsKCj1lSiFzKh8JWfrcIGx8usVrbDc1QSMfDg=w2400';
-  ariaPic = 'https://lh3.googleusercontent.com/LUeNHar2bHNsLqvYt-Ke2Z7fE1X2jvM1y3GdtpY8_N4E7oFxxQ7P45fCbhrLfbqpV-izHoV_k2AhMN8FQd3BsmdzqGIhTwMPw-C5Zqw--_9YXQzD5Xlc6fJoGg_CIL7I-SIgbNBnag=w2400';
-  users = [
-    {
-      name: 'Charlie Sale',
-      fields: {
-        intensity: 'MID',
-        pace: '9:30'
-      },
-      picUrl: this.charliePic,
-    },
-    {
-      name: 'Aria Sturmer',
-      fields: {
-        intensity: 'HIGH',
-        pace: '8:30'
-      },
-      picUrl: this.ariaPic,
-    },
-  ];
-  isMobile = false;
-  breakpointSub?: Subscription;
+  cards = [0, 1, 2, 3, 5];
+  cards$?: Observable<number[]>;
+  isMobile$?: Observable<boolean>;
 
   constructor(private breakpointObserver: BreakpointObserver) { }
 
   ngOnInit(): void {
-    this.breakpointSub = this.breakpointObserver.observe([Breakpoints.Handset]).subscribe(state => {
-      this.isMobile = state.matches;
-    });
-  }
+    this.isMobile$ = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
+      map(state => state.matches)
+    );
 
+    this.cards$ = this.isMobile$.pipe(
+      map(isMobile => isMobile ? this.cards.slice(0, 3) : this.cards.slice(0, 6))
+    );
+  }
 }

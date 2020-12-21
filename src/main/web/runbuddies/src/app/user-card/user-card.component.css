@@ -1,26 +1,13 @@
-.person-card {
+.user-card {
+  width: 250px;
   border-radius: 16px;
-  margin: 16px auto;
-  width: 300px; }
-  .person-card .person-action-button--half, .person-card .person-action-button--full {
-    border-radius: 16px; }
-  .person-card .person-action-button--half {
-    width: 50%; }
-  .person-card .person-action-button--full {
-    width: 100%; }
-  .person-card .button-container {
-    display: flex;
-    flex-direction: row; }
-  .person-card .info-key {
-    font-weight: lighter;
-    padding: 4px; }
-  .person-card .info-value {
-    font-weight: bold;
-    padding: 4px; }
-  .person-card .user-image {
+  margin: 8px; }
+  .user-card img {
     object-fit: cover;
-    margin: 8px;
-    border-radius: 8px;
-    border: 0.5px solid black; }
+    object-position: center; }
+  .user-card .schedule-btn {
+    width: 100%;
+    margin-bottom: 0;
+    border-radius: 16px; }
 
 /*# sourceMappingURL=user-card.component.css.map */

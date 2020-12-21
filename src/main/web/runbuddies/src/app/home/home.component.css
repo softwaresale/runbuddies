@@ -1,3 +1,20 @@
+.home-container, .home-container--mobile {
+  padding: 32px; }
+  .home-container div, .home-container--mobile div {
+    margin-bottom: 16px; }
+  .home-container .block-btn, .home-container--mobile .block-btn {
+    height: 40px;
+    width: 100%;
+    border-radius: 16px; }
 
+.home-container--mobile {
+  padding: 8px; }
+
+.user-card-row {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 275px;
+  overflow-x: auto;
+  padding-bottom: 8px; }
 
 /*# sourceMappingURL=home.component.css.map */
