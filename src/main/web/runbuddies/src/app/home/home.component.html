@@ -5,7 +5,7 @@
     <div class="user-card-row">
       <app-user-card *ngFor="let card of cards$ | async"></app-user-card>
     </div>
-    <button mat-raised-button color="primary" class="block-btn">VIEW ALL</button>
+    <a mat-raised-button color="primary" class="block-btn" [routerLink]="['/buddies']">VIEW ALL</a>
   </div>
   <div>
     <h1 class="mat-display-1" style="margin-bottom: 32px">Explore</h1>

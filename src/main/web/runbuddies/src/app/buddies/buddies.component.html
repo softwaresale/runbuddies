@@ -1,0 +1,5 @@
+
+<div class="buddies-container" [class.buddies-container--mobile]="isMobile$ | async">
+  <h1 class="mat-display-1" style="margin-bottom: 16px">Your Buddies</h1>
+  <app-user-card-grid [profiles]="profiles"></app-user-card-grid>
+</div>

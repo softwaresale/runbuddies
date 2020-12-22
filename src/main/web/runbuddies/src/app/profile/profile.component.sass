@@ -1,0 +1,88 @@
+
+.profile-container
+  padding: 32px 64px
+
+  .profile-sheet
+    border-radius: 8px
+    background-color: white
+
+    .profile-sheet-content
+      padding: 16px
+
+      > div
+        margin-bottom: 16px
+
+      .profile-picture
+        height: 150px
+        width: 150px
+        object-fit: cover
+        object-position: center
+        border-radius: 50%
+
+      .profile-name
+        margin-bottom: 0
+
+      .profile-info-container
+        display: flex
+        flex-direction: row
+        justify-content: space-evenly
+
+        .profile-info-box
+          text-align: center
+          margin: 0 16px
+          border: black .5px solid
+          border-radius: 8px
+          padding: 16px
+          width: 33%
+
+          h2
+            margin-bottom: 8px
+
+          .bullet
+            font-size: 40px
+
+      .availability-calendar
+        display: flex
+        flex-direction: row
+        justify-content: space-evenly
+
+        .day
+          border: black .5px solid
+          width: 100%
+          text-align: center
+
+          &:first-child
+            border-radius: 8px 0 0 8px
+
+            .title
+              border-radius: 8px 0 0 0
+
+          &:last-child
+            border-radius: 0 8px 8px 0
+            .title
+              border-radius: 0 8px 0 0
+
+          .title
+            display: inline-block
+            background-color: #f4f4f4
+            width: 100%
+            font-weight: bold
+
+          .time-info
+            display: inline-block
+            padding: 8px
+
+
+  .header-bar
+    border-radius: 8px 8px 0 0
+
+.profile-container--mobile
+  @extend .profile-container
+  padding: 8px 16px
+
+  .profile-info-container
+    flex-wrap: wrap
+
+    .profile-info-box
+      width: 100% !important
+      margin: 8px 0 !important

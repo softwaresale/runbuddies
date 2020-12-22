@@ -1,0 +1,61 @@
+
+<div class="profile-container" [class.profile-container--mobile]="isMobile">
+  <div class="profile-sheet mat-elevation-z3">
+    <mat-toolbar class="header-bar">
+      <span>Charlie Sale</span>
+      <span style="flex: 1 0 auto"><!--spacer--></span>
+      <button mat-raised-button color="primary">
+        <mat-icon>event</mat-icon>
+        <span style="margin-left: 4px">SCHEDULE</span>
+      </button>
+    </mat-toolbar>
+    <div class="profile-sheet-content">
+      <div>
+        <img class="profile-picture" src="{{ pic }}" alt="Profile Picture" />
+        <h1 class="mat-h1 profile-name">Charlie Sale</h1>
+        <h4 class="mat-h4">@runnersale</h4>
+      </div>
+      <div>
+        <h1>Running Info</h1>
+        <div class="profile-info-container">
+          <div class="profile-info-box">
+            <h2>Average Pace</h2>
+            <span class="bullet">&#8226;</span>
+            <h2>8:00 mi/min</h2>
+          </div>
+          <div class="profile-info-box">
+            <h2>Intensity</h2>
+            <span class="bullet">&#8226;</span>
+            <h2>MEDIUM</h2>
+          </div>
+          <div class="profile-info-box">
+            <h2>Average Runs a Week</h2>
+            <span class="bullet">&#8226;</span>
+            <h2>4</h2>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h1>Availability</h1>
+        <div *ngIf="!isMobile" class="availability-calendar">
+          <div *ngFor="let day of daysOfTheWeek" class="day">
+            <span class="title">{{ day | titlecase }}</span>
+            <span class="time-info">
+              <mat-chip-list>
+                <mat-chip *ngFor="let time of availability[day]">{{ time }}</mat-chip>
+              </mat-chip-list>
+            </span>
+          </div>
+        </div>
+        <div *ngIf="isMobile">
+          <div *ngFor="let availability of upcomingAvailability">
+            <span>{{ availability.day }}</span>
+            <mat-chip-list>
+              <mat-chip *ngFor="let time of availability.times">{{ time }}</mat-chip>
+            </mat-chip-list>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

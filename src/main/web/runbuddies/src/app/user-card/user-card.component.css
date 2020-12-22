@@ -1,13 +1,19 @@
-.user-card {
+.user-card, .user-card--mobile, .user-card--mobile-grid {
   width: 250px;
   border-radius: 16px;
   margin: 8px; }
-  .user-card img {
+  .user-card img, .user-card--mobile img, .user-card--mobile-grid img {
     object-fit: cover;
     object-position: center; }
-  .user-card .schedule-btn {
+  .user-card .schedule-btn, .user-card--mobile .schedule-btn, .user-card--mobile-grid .schedule-btn {
     width: 100%;
     margin-bottom: 0;
     border-radius: 16px; }
+
+.user-card--mobile img, .user-card--mobile-grid img {
+  height: 150px; }
+
+.user-card--mobile-grid {
+  width: unset; }
 
 /*# sourceMappingURL=user-card.component.css.map */

@@ -1,8 +1,9 @@
 <mat-card matRipple (mouseenter)="hovered = true" (mouseleave)="hovered = false"
-          class="user-card mat-elevation-z3" [class.mat-elevation-z8]="hovered">
+          class="user-card mat-elevation-z3" [class.mat-elevation-z8]="hovered"
+          [class.user-card--mobile]="isMobile$ | async" [class.user-card--mobile-grid]="(isMobile$ | async) && inGrid">
   <div>
     <img mat-card-image src="{{ pic }}" alt="Profile Picture" />
-    <mat-card-header>
+    <mat-card-header (click)="openProfile()">
       <mat-card-title>Charlie Sale</mat-card-title>
       <mat-card-subtitle>Pace 9:30 mi/min  Intensity MED</mat-card-subtitle>
     </mat-card-header>
