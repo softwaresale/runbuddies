@@ -52,10 +52,9 @@ allOpen {
 
 frontend {
     packageJsonDirectory.set(projectDir.resolve("src/main/web/runbuddies"))
-    nodeDistributionProvided.set(false)
+    nodeDistributionProvided.set(true)
     nodeVersion.set("12.18.2")
-    yarnEnabled.set(true)
-    yarnVersion.set("1.22.4")
+    yarnEnabled.set(false)
     installScript.set("install")
     cleanScript.set("run clean")
     checkScript.set("test")

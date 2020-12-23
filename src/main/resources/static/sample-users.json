@@ -1,0 +1,92 @@
+[
+  {
+    "fullName": "Charlie Sale",
+    "bio": "Just a fun loving runner. I like to run a lot",
+    "averagePace": 9.5,
+    "weeklyRuns": 3,
+    "intensity": "MEDIUM",
+    "availability": [
+      {
+        "day": "MONDAY",
+        "startTime": "14:00+02:00",
+        "duration": "PT1H",
+        "endTime": "15:00+02:00"
+      },
+      {
+        "day": "WEDNESDAY",
+        "startTime": "14:00+02:00",
+        "duration": "PT1H30M",
+        "endTime": "15:30+02:00"
+      }
+    ],
+    "id": "runnersale"
+  },
+  {
+    "fullName": "Aria Sturmer",
+    "bio": "Just a fun loving runner. I like to run a lot",
+    "averagePace": 8.5,
+    "weeklyRuns": 4,
+    "intensity": "HIGH",
+    "availability": [
+      {
+        "day": "MONDAY",
+        "startTime": "14:00+02:00",
+        "duration": "PT1H",
+        "endTime": "15:00+02:00"
+      },
+      {
+        "day": "TUESDAY",
+        "startTime": "14:00+02:00",
+        "duration": "PT1H",
+        "endTime": "15:00+02:00"
+      },
+      {
+        "day": "WEDNESDAY",
+        "startTime": "14:00+02:00",
+        "duration": "PT1H",
+        "endTime": "15:00+02:00"
+      },
+      {
+        "day": "THURSDAY",
+        "startTime": "14:00+02:00",
+        "duration": "PT1H30M",
+        "endTime": "15:30+02:00"
+      }
+    ],
+    "id": "asturmer"
+  },
+  {
+    "fullName": "Claire Sale",
+    "bio": "Just a fun loving runner. I like to run a lot",
+    "averagePace": 7.5,
+    "weeklyRuns": 6,
+    "intensity": "EXTREME",
+    "availability": [
+      {
+        "day": "MONDAY",
+        "startTime": "14:00+02:00",
+        "duration": "PT1H",
+        "endTime": "15:00+02:00"
+      },
+      {
+        "day": "TUESDAY",
+        "startTime": "14:00+02:00",
+        "duration": "PT1H",
+        "endTime": "15:00+02:00"
+      },
+      {
+        "day": "WEDNESDAY",
+        "startTime": "14:00+02:00",
+        "duration": "PT1H",
+        "endTime": "15:00+02:00"
+      },
+      {
+        "day": "THURSDAY",
+        "startTime": "14:00+02:00",
+        "duration": "PT1H30M",
+        "endTime": "15:30+02:00"
+      }
+    ],
+    "id": "csale"
+  }
+]
