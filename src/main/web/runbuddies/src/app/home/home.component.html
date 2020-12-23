@@ -3,14 +3,14 @@
   <div>
     <h1 class="mat-display-1" style="margin-bottom: 32px">Your Buddies</h1>
     <div class="user-card-row">
-      <app-user-card *ngFor="let card of cards$ | async"></app-user-card>
+      <app-user-card *ngFor="let buddy of buddies$ | async" [user]="buddy"></app-user-card>
     </div>
     <a mat-raised-button color="primary" class="block-btn" [routerLink]="['/buddies']">VIEW ALL</a>
   </div>
   <div>
     <h1 class="mat-display-1" style="margin-bottom: 32px">Explore</h1>
     <div class="user-card-row">
-      <app-user-card *ngFor="let card of cards$ | async"></app-user-card>
+      <app-user-card *ngFor="let buddy of buddies$ | async" [user]="buddy"></app-user-card>
     </div>
     <button mat-raised-button color="primary" class="block-btn">EXPLORE</button>
   </div>

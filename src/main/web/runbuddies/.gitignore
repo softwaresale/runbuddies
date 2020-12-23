@@ -48,5 +48,5 @@ Thumbs.db
 # CSS maps #
 src/.sass-cache
 src/app/.sass-cache
-src/app/**/.sass-cache
-src/app/**/**/.sass-cache
+src/app/**/*.css.map
+src/app/**/*.sassc

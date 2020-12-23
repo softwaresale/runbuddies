@@ -2,10 +2,10 @@
           class="user-card mat-elevation-z3" [class.mat-elevation-z8]="hovered"
           [class.user-card--mobile]="isMobile$ | async" [class.user-card--mobile-grid]="(isMobile$ | async) && inGrid">
   <div>
-    <img mat-card-image src="{{ pic }}" alt="Profile Picture" />
+    <img mat-card-image src="{{ user?.profilePic }}" alt="Profile Picture" (click)="openProfile()" />
     <mat-card-header (click)="openProfile()">
-      <mat-card-title>Charlie Sale</mat-card-title>
-      <mat-card-subtitle>Pace 9:30 mi/min  Intensity MED</mat-card-subtitle>
+      <mat-card-title>{{ user?.fullName }}</mat-card-title>
+      <mat-card-subtitle>Pace {{ user?.paceStr }} mi/min  Intensity {{ user?.intensity }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-actions style="margin-bottom: -16px">
       <button mat-raised-button color="accent" class="schedule-btn">SCHEDULE</button>

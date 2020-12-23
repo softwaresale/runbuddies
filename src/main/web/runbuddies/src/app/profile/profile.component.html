@@ -1,8 +1,8 @@
 
 <div class="profile-container" [class.profile-container--mobile]="isMobile$ | async">
-  <div class="profile-sheet mat-elevation-z3">
+  <div *ngIf="profile$ | async as profile" class="profile-sheet mat-elevation-z3">
     <mat-toolbar class="header-bar">
-      <span>Charlie Sale</span>
+      <span>{{ profile.fullName }}</span>
       <span style="flex: 1 0 auto"><!--spacer--></span>
       <ng-container *ngIf="!(isMobile$ | async); else scheduleFab">
         <button mat-raised-button color="primary">
@@ -24,35 +24,35 @@
       </ng-template>
     </mat-toolbar>
     <div class="profile-sheet-content">
-      <div class="user-info-container mat-elevation-z3">
+      <div appHoverable class="user-info-container mat-elevation-z3">
         <div class="user-info">
-          <img class="profile-picture" src="{{ pic }}" alt="Profile Picture" />
-          <h1 class="mat-h1 profile-name">Charlie Sale</h1>
-          <h4 class="mat-h4" style="margin-bottom: 4px">@runnersale</h4>
+          <img class="profile-picture" src="{{ profile.profilePic }}" alt="Profile Picture" />
+          <h1 class="mat-h1 profile-name">{{ profile.fullName }}</h1>
+          <h4 class="mat-h4" style="margin-bottom: 4px">@{{ profile.id }}</h4>
           <button mat-button color="primary">FOLLOW</button>
         </div>
         <div class="bio-box">
-          <p>This is a brief bio about me. This has stuff about me.</p>
-          <button mat-button color="accent">SHOW</button>
+          <p>{{ profile.bio }}</p>
+          <!--<button mat-button color="accent">SHOW</button>-->
         </div>
       </div>
       <div>
         <h1>Running Info</h1>
         <div class="profile-info-container">
-          <div class="profile-info-box mat-elevation-z3">
+          <div appHoverable class="profile-info-box mat-elevation-z3">
             <h2>Average Pace</h2>
             <span class="bullet">&#8226;</span>
-            <h2>8:00 mi/min</h2>
+            <h2>{{ profile.paceStr }} mi/min</h2>
           </div>
-          <div class="profile-info-box mat-elevation-z3">
+          <div appHoverable class="profile-info-box mat-elevation-z3">
             <h2>Intensity</h2>
             <span class="bullet">&#8226;</span>
-            <h2>MEDIUM</h2>
+            <h2>{{ profile.intensity }}</h2>
           </div>
-          <div class="profile-info-box mat-elevation-z3">
+          <div appHoverable class="profile-info-box mat-elevation-z3">
             <h2>Average Runs a Week</h2>
             <span class="bullet">&#8226;</span>
-            <h2>4</h2>
+            <h2>{{ profile.weeklyRuns }}</h2>
           </div>
         </div>
       </div>

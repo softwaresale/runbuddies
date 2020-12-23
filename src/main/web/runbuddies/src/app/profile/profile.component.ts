@@ -1,10 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { select, Store } from '@ngrx/store';
 import { appStateIsMobile } from '../app-state/app-state.selectors';
+import { User } from '../models/user/user.model';
+import { loadProfile } from './state/profile.actions';
+import { profileSelectUser } from './state/profile.selectors';
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +17,7 @@ import { appStateIsMobile } from '../app-state/app-state.selectors';
 export class ProfileComponent implements OnInit, OnDestroy {
 
   pic = 'https://lh3.googleusercontent.com/wOnBqLiJIVp_S8uEO1gogJDDu9FStH_Ah6X7uWhkp57BJbswjzKtggWrAPv4J_hjdiaeZJPKVNN7qKMcn9S2TV4sifZim6bxz1sHyAsKCj1lSiFzKh8JWfrcIGx8usVrbDc1QSMfDg=w2400';
-  profileId$?: Observable<string>;
+  profile$?: Observable<User | null>;
 
   daysOfTheWeek = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 
@@ -38,11 +41,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.profileId$ = this.activatedRoute.params.pipe(
+    this.activatedRoute.params.pipe(
       map(params => params.id)
-    );
+    ).subscribe(id => this.store$.dispatch(loadProfile({ id })));
 
     this.isMobile$ = this.store$.pipe(select(appStateIsMobile));
+    this.profile$ = this.store$.pipe(select(profileSelectUser));
   }
 
   ngOnDestroy(): void {

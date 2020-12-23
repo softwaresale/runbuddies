@@ -1,5 +1,6 @@
 package com.github.softwaresale.runbuddies.user
 
+import kotlin.math.floor
 import com.fasterxml.jackson.annotation.JsonBackReference
 import com.fasterxml.jackson.annotation.JsonManagedReference
 import com.github.softwaresale.runbuddies.availability.Availability
@@ -20,6 +21,7 @@ class User(
     var averagePace: Double,
     var weeklyRuns: Int,
     var intensity: Intensity,
+    var profilePic: String = "https://thispersondoesnotexist.com/image",
 
     @OneToMany(cascade = [CascadeType.ALL])
     val availability: MutableSet<Availability> = mutableSetOf(),
@@ -34,4 +36,14 @@ class User(
 
     @Id
     var id: String,
-)
+) {
+
+    val paceStr: String
+        get() {
+            val decimal = this.averagePace - floor(this.averagePace)
+            val minutes = floor(this.averagePace).toInt()
+            val seconds = (decimal * 60).toInt()
+
+            return "$minutes:$seconds"
+        }
+}

@@ -8,6 +8,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
 import { LayoutModule } from '@angular/cdk/layout';
+import { StoreModule } from '@ngrx/store';
+import * as fromProfile from './state/profile.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { ProfileEffects } from './state/profile.effects';
+import { HoverableModule } from '../hoverable/hoverable.module';
 
 
 @NgModule({
@@ -19,7 +24,10 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatButtonModule,
     MatIconModule,
     MatChipsModule,
-    LayoutModule
+    LayoutModule,
+    StoreModule.forFeature(fromProfile.profileFeatureKey, fromProfile.reducer),
+    EffectsModule.forFeature([ProfileEffects]),
+    HoverableModule
   ]
 })
 export class ProfileModule { }

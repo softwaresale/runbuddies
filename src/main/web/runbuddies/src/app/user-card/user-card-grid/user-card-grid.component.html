@@ -1,4 +1,10 @@
 
-<div class="card-grid">
+<div class="card-grid" *ngIf="profiles.length > 0; else empty">
   <app-user-card *ngFor="let profile of profiles" [inGrid]="true"></app-user-card>
 </div>
+
+<ng-template #empty>
+  <div>
+    <h1>There are no profiles to display...</h1>
+  </div>
+</ng-template>
