@@ -7,6 +7,8 @@ plugins {
     kotlin("plugin.spring") version "1.4.10"
     kotlin("plugin.jpa") version "1.4.10"
     kotlin("plugin.allopen") version "1.3.61"
+    kotlin("kapt") version "1.3.61"
+    id("org.siouan.frontend") version "3.0.1"
 }
 
 group = "com.github.softwaresale"
@@ -46,6 +48,24 @@ allOpen {
     annotation("javax.persistence.Entity")
     annotation("javax.persistence.Embeddable")
     annotation("javax.persistence.MappedSuperclass")
+}
+
+frontend {
+    packageJsonDirectory.set(projectDir.resolve("src/main/web/runbuddies"))
+    nodeDistributionProvided.set(false)
+    nodeVersion.set("12.18.2")
+    yarnEnabled.set(true)
+    yarnVersion.set("1.22.4")
+    installScript.set("install")
+    cleanScript.set("run clean")
+    checkScript.set("test")
+    assembleScript.set("ng build --prod")
+}
+
+tasks.withType<ProcessResources> {
+    from("src/main/web/runbuddies/dist/runbuddies") {
+        into("static/")
+    }
 }
 
 tasks.withType<KotlinCompile> {

@@ -1,1 +1,10 @@
 
+spring:
+  datasource:
+    username: postgres
+    password: password
+    url: jdbc:postgresql://localhost:5432/runbuddies
+    continue-on-error: true
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
