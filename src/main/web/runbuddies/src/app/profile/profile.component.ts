@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { select, Store } from '@ngrx/store';
+import { appStateIsMobile } from '../app-state/app-state.selectors';
 
 @Component({
   selector: 'app-profile',
@@ -27,21 +29,23 @@ export class ProfileComponent implements OnInit, OnDestroy {
   };
 
   isMobile$?: Observable<boolean>;
-  isMobile = false;
-  mobileSub?: Subscription;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-  ) { }
+    private store$: Store<any>
+  ) {
+    console.log('Constructor');
+  }
 
   ngOnInit(): void {
     this.profileId$ = this.activatedRoute.params.pipe(
       map(params => params.id)
     );
+
+    this.isMobile$ = this.store$.pipe(select(appStateIsMobile));
   }
 
   ngOnDestroy(): void {
-    this.mobileSub?.unsubscribe();
   }
 
   get upcomingAvailability(): { day: string, times: string[] }[] {

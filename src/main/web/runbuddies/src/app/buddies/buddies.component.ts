@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { select, Store } from '@ngrx/store';
+import { appStateIsMobile } from '../app-state/app-state.selectors';
 
 @Component({
   selector: 'app-buddies',
@@ -13,9 +15,9 @@ export class BuddiesComponent implements OnInit {
   profiles = [...Array(20).keys()];
   isMobile$?: Observable<boolean>;
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor(private store$: Store<any>) { }
 
   ngOnInit(): void {
-    this.isMobile$ = this.breakpointObserver.observe(Breakpoints.Handset).pipe(map(state => state.matches));
+    this.isMobile$ = this.store$.pipe(select(appStateIsMobile));
   }
 }

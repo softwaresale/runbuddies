@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { select, Store } from '@ngrx/store';
+import { appStateIsMobile } from '../app-state/app-state.selectors';
 
 @Component({
   selector: 'app-user-card',
@@ -20,12 +22,12 @@ export class UserCardComponent implements OnInit {
   pic = 'https://lh3.googleusercontent.com/wOnBqLiJIVp_S8uEO1gogJDDu9FStH_Ah6X7uWhkp57BJbswjzKtggWrAPv4J_hjdiaeZJPKVNN7qKMcn9S2TV4sifZim6bxz1sHyAsKCj1lSiFzKh8JWfrcIGx8usVrbDc1QSMfDg=w2400';
 
   constructor(
-    private breakpointObserver: BreakpointObserver,
+    private store$: Store<any>,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.isMobile$ = this.breakpointObserver.observe(Breakpoints.Handset).pipe(map(state => state.matches));
+    this.isMobile$ = this.store$.pipe(select(appStateIsMobile));
   }
 
   async openProfile(): Promise<boolean> {

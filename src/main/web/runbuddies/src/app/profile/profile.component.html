@@ -1,34 +1,55 @@
 
-<div class="profile-container" [class.profile-container--mobile]="isMobile">
+<div class="profile-container" [class.profile-container--mobile]="isMobile$ | async">
   <div class="profile-sheet mat-elevation-z3">
     <mat-toolbar class="header-bar">
       <span>Charlie Sale</span>
       <span style="flex: 1 0 auto"><!--spacer--></span>
-      <button mat-raised-button color="primary">
-        <mat-icon>event</mat-icon>
-        <span style="margin-left: 4px">SCHEDULE</span>
-      </button>
+      <ng-container *ngIf="!(isMobile$ | async); else scheduleFab">
+        <button mat-raised-button color="primary">
+          <mat-icon>event</mat-icon>
+          <span style="margin-left: 4px">SCHEDULE</span>
+        </button>
+        <button mat-stroked-button color="primary" style="margin-left: 16px">
+          <mat-icon>message</mat-icon>
+          <span style="margin-left: 4px">MESSAGE</span>
+        </button>
+      </ng-container>
+      <ng-template #scheduleFab>
+        <button mat-mini-fab color="primary">
+          <mat-icon>event</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary" style="margin-left: 8px">
+          <mat-icon>message</mat-icon>
+        </button>
+      </ng-template>
     </mat-toolbar>
     <div class="profile-sheet-content">
-      <div>
-        <img class="profile-picture" src="{{ pic }}" alt="Profile Picture" />
-        <h1 class="mat-h1 profile-name">Charlie Sale</h1>
-        <h4 class="mat-h4">@runnersale</h4>
+      <div class="user-info-container mat-elevation-z3">
+        <div class="user-info">
+          <img class="profile-picture" src="{{ pic }}" alt="Profile Picture" />
+          <h1 class="mat-h1 profile-name">Charlie Sale</h1>
+          <h4 class="mat-h4" style="margin-bottom: 4px">@runnersale</h4>
+          <button mat-button color="primary">FOLLOW</button>
+        </div>
+        <div class="bio-box">
+          <p>This is a brief bio about me. This has stuff about me.</p>
+          <button mat-button color="accent">SHOW</button>
+        </div>
       </div>
       <div>
         <h1>Running Info</h1>
         <div class="profile-info-container">
-          <div class="profile-info-box">
+          <div class="profile-info-box mat-elevation-z3">
             <h2>Average Pace</h2>
             <span class="bullet">&#8226;</span>
             <h2>8:00 mi/min</h2>
           </div>
-          <div class="profile-info-box">
+          <div class="profile-info-box mat-elevation-z3">
             <h2>Intensity</h2>
             <span class="bullet">&#8226;</span>
             <h2>MEDIUM</h2>
           </div>
-          <div class="profile-info-box">
+          <div class="profile-info-box mat-elevation-z3">
             <h2>Average Runs a Week</h2>
             <span class="bullet">&#8226;</span>
             <h2>4</h2>
@@ -37,24 +58,38 @@
       </div>
       <div>
         <h1>Availability</h1>
-        <div *ngIf="!isMobile" class="availability-calendar">
+        <div *ngIf="!(isMobile$ | async); else mobileAvailability" class="availability-calendar">
           <div *ngFor="let day of daysOfTheWeek" class="day">
             <span class="title">{{ day | titlecase }}</span>
             <span class="time-info">
               <mat-chip-list>
-                <mat-chip *ngFor="let time of availability[day]">{{ time }}</mat-chip>
+                <mat-chip *ngFor="let time of availability[day]" color="primary" selected>
+                  <mat-chip-avatar><mat-icon>event</mat-icon></mat-chip-avatar>
+                  {{ time }}
+                </mat-chip>
               </mat-chip-list>
             </span>
           </div>
         </div>
-        <div *ngIf="isMobile">
-          <div *ngFor="let availability of upcomingAvailability">
-            <span>{{ availability.day }}</span>
-            <mat-chip-list>
-              <mat-chip *ngFor="let time of availability.times">{{ time }}</mat-chip>
-            </mat-chip-list>
+        <ng-template #mobileAvailability>
+          <div class="mobile-availability">
+            <ng-container *ngFor="let condensedAvailability of upcomingAvailability">
+              <div class="day-container">
+                <div class="day">
+                  <span>{{ condensedAvailability.day | titlecase }}</span>
+                </div>
+                <div>
+                  <ul>
+                    <li *ngFor="let time of condensedAvailability.times">{{ time }}</li>
+                  </ul>
+                </div>
+                <div>
+                  <button mat-button color="primary">SCHEDULE</button>
+                </div>
+              </div>
+            </ng-container>
           </div>
-        </div>
+        </ng-template>
       </div>
     </div>
   </div>

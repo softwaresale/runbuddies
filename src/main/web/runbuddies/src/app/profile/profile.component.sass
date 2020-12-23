@@ -12,15 +12,40 @@
       > div
         margin-bottom: 16px
 
-      .profile-picture
-        height: 150px
-        width: 150px
-        object-fit: cover
-        object-position: center
-        border-radius: 50%
+      .user-info-container
+        display: flex
+        flex-direction: row
+        align-items: center
+        justify-content: center
+        padding: 8px
+        // border: black .5px solid
+        border-radius: 8px
+        width: fit-content
+        margin: 0 auto 16px
 
-      .profile-name
-        margin-bottom: 0
+        .user-info
+          display: flex
+          flex-direction: column
+          align-items: center
+
+          .profile-picture
+            height: 150px
+            width: 150px
+            object-fit: cover
+            object-position: center
+            border-radius: 50%
+
+          .profile-name
+            margin-bottom: 0
+
+        .bio-box
+          display: flex
+          flex-direction: column
+          margin-left: 16px
+          padding: 8px
+
+          button
+            align-self: flex-end
 
       .profile-info-container
         display: flex
@@ -30,7 +55,7 @@
         .profile-info-box
           text-align: center
           margin: 0 16px
-          border: black .5px solid
+          // border: black .5px solid
           border-radius: 8px
           padding: 16px
           width: 33%
@@ -80,9 +105,35 @@
   @extend .profile-container
   padding: 8px 16px
 
+  .profile-sheet
+    .profile-sheet-content
+      .user-info-container
+        flex-direction: column
+
   .profile-info-container
     flex-wrap: wrap
 
     .profile-info-box
       width: 100% !important
       margin: 8px 0 !important
+
+
+.mobile-availability
+  display: flex
+  flex-direction: column
+
+  .day-container
+    display: flex
+    align-items: center
+    justify-content: space-evenly
+    border: black .5px solid
+    padding: 8px
+
+    &:first-child
+      border-radius: 8px 8px 0 0
+
+    &:last-child
+      border-radius: 0 0 8px 8px
+
+    .day
+      margin-right: 16px

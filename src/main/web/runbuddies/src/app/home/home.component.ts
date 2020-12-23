@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { select, Store } from '@ngrx/store';
+import { appStateIsMobile } from '../app-state/app-state.selectors';
 
 @Component({
   selector: 'app-home',
@@ -14,12 +16,10 @@ export class HomeComponent implements OnInit {
   cards$?: Observable<number[]>;
   isMobile$?: Observable<boolean>;
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor(private store$: Store<any>) { }
 
   ngOnInit(): void {
-    this.isMobile$ = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-      map(state => state.matches)
-    );
+    this.isMobile$ = this.store$.pipe(select(appStateIsMobile));
 
     this.cards$ = this.isMobile$.pipe(
       map(isMobile => isMobile ? this.cards.slice(0, 3) : this.cards.slice(0, 6))
