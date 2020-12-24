@@ -2,7 +2,6 @@ package com.github.softwaresale.runbuddies.user
 
 import kotlin.math.floor
 import com.fasterxml.jackson.annotation.JsonBackReference
-import com.fasterxml.jackson.annotation.JsonManagedReference
 import com.github.softwaresale.runbuddies.availability.Availability
 import com.github.softwaresale.runbuddies.match.Match
 import javax.persistence.*

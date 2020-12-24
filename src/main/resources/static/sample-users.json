@@ -42,7 +42,7 @@
       },
       {
         "day": "WEDNESDAY",
-        "startTime": "14:00+02:00",
+        "startTime": "14:00-02:00",
         "duration": "PT1H",
         "endTime": "15:00+02:00"
       },
