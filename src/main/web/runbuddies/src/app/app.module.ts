@@ -16,18 +16,45 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AppStateModule } from './app-state/app-state.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthHttpInterceptor, AuthModule as Auth0AuthModule } from '@auth0/auth0-angular';
+import { AuthModule } from './auth/auth.module';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+
+    // Setup authentication
+    Auth0AuthModule.forRoot({
+      domain: 'runbuddies.us.auth0.com',
+      clientId: 'mJBBDHgrXzBuQsjAIdZwPS96V4YYvX1x',
+      redirectUri: window.location.origin,
+      httpInterceptor: {
+        allowedList: [
+          {
+            uri: '/api/*',
+            tokenOptions: {
+              audience: 'https://www.runbuddies.com/api',
+            }
+          },
+          {
+            uri: 'http://localhost:8080/api/*',
+            tokenOptions: {
+              audience: 'https://www.runbuddies.com/api',
+            }
+          },
+        ]
+      },
+    }),
 
     // Setup NGRX
     StoreModule.forRoot({}, {}),
@@ -44,8 +71,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    AuthModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

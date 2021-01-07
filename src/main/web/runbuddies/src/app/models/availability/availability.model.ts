@@ -18,7 +18,7 @@ export const daysOfWeek = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday
 export const dayToNum = (day: DaysOfWeekType) => daysOfWeek.indexOf(day);
 export const numToDay = (day: number) => daysOfWeek[day];
 
-const durationToString = (duration: Duration) => `PT${duration?.hours ?? 0}H${duration?.minutes ?? 0}`;
+const durationToString = (duration: Duration) => `PT${duration?.hours ?? 0}H${duration?.minutes ?? 0}M`;
 
 export const availabilityCreate = (dayInfo: number | DaysOfWeekType, startTime: string, duration: Duration) => {
   let day: DaysOfWeekType;
@@ -28,8 +28,9 @@ export const availabilityCreate = (dayInfo: number | DaysOfWeekType, startTime: 
     day = dayInfo;
   }
   const offset = new Date().toString().match(/([-\+][0-9]+)\s/)?.[1] ?? '-0000';
+  const updatedOffset = offset.slice(0, 3) + ':' + offset.slice(3, 5);
 
-  const startTimeOffset = startTime + offset;
+  const startTimeOffset = startTime + updatedOffset;
 
   return {
     day,

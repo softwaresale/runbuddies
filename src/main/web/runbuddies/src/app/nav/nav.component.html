@@ -2,7 +2,7 @@
   <mat-sidenav #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
+      [opened]="(isHandset$ | async) === false && (isLoggedIn$ | async)">
     <mat-toolbar>
       <span>Menu</span>
       <span style="flex: 1 0 auto"><!-- fill --></span>
@@ -26,6 +26,8 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>Run Buddies</span>
+      <span style="flex: 1 0 auto"><!-- fill --></span>
+      <app-login-buttons></app-login-buttons>
     </mat-toolbar>
 
     <!-- Children -->

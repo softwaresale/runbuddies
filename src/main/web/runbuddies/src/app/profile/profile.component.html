@@ -58,7 +58,7 @@
       </div>
       <div>
         <h1>Availability</h1>
-        <div *ngIf="!(isMobile$ | async); else mobileAvailability" class="availability-calendar">
+        <div *ngIf="!(isMobile$ | async) && (availability$ | async) as availability; else mobileAvailability" class="availability-calendar">
           <div *ngFor="let day of daysOfTheWeek" class="day">
             <span class="title">{{ day | titlecase }}</span>
             <span class="time-info">
@@ -73,7 +73,7 @@
         </div>
         <ng-template #mobileAvailability>
           <div class="mobile-availability">
-            <ng-container *ngFor="let condensedAvailability of upcomingAvailability">
+            <ng-container *ngFor="let condensedAvailability of upcomingAvailability$ | async">
               <div class="day-container">
                 <div class="day">
                   <span>{{ condensedAvailability.day | titlecase }}</span>

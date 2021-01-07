@@ -8,3 +8,16 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://runbuddies.us.auth0.com/
+
+auth0:
+  audience: https://www.runbuddies.com/api
+  issuer-uri: https://runbuddies.us.auth0.com/
+  mgmt-api:
+    client-id: 4qrYmCBlpeDNNGoT0W2nNbykdlWu0Pz1
+    client-secret: HKnb_VXGGre9zVRCgqHsudHJO_UPvklEY8lly9Mo6h9UC6EHsQF80yVrujrlACdU
+    audience: https://runbuddies.us.auth0.com/api/v2/

@@ -1,0 +1,7 @@
+
+<div class="login-btns-container">
+  <button *ngIf="!(authenticated$ | async); else loggedIn" mat-flat-button (click)="login()" color="accent">LOG IN</button>
+</div>
+<ng-template #loggedIn>
+  <button mat-flat-button (click)="logout()" color="accent">LOG OUT</button>
+</ng-template>

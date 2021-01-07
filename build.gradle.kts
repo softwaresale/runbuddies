@@ -31,6 +31,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
     implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
     implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.security:spring-security-oauth2-jose")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -42,6 +43,9 @@ dependencies {
     testImplementation("org.springframework.security:spring-security-test")
 
     implementation("org.yaml:snakeyaml:1.27")
+    implementation("com.auth0:auth0:1.25.0")
+    // This dependency satisfies the auth0 dependency. There's just like something wrong with it ig
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
 }
 
 allOpen {

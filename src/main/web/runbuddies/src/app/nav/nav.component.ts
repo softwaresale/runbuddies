@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { select, Store } from '@ngrx/store';
+import { authIsLoggedIn } from '../auth/state/auth.selectors';
 
 @Component({
   selector: 'app-nav',
@@ -44,6 +46,13 @@ export class NavComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  isLoggedIn$: Observable<boolean> = this.store$.pipe(
+    select(authIsLoggedIn)
+  );
+
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private store$: Store<any>,
+  ) {}
 
 }

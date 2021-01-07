@@ -11,7 +11,8 @@ export abstract class AbstractEntityService<T, ID> {
   }
 
   public get(path: string): Observable<T> {
-    return this.httpClient.get<T>(path);
+    const fullPath = `${this.basePath}/${path}`;
+    return this.httpClient.get<T>(fullPath);
   }
 
   public getCollection(path: string): Observable<T[]> {

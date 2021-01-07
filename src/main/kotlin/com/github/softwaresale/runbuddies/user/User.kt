@@ -2,6 +2,7 @@ package com.github.softwaresale.runbuddies.user
 
 import kotlin.math.floor
 import com.fasterxml.jackson.annotation.JsonBackReference
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.github.softwaresale.runbuddies.availability.Availability
 import com.github.softwaresale.runbuddies.match.Match
 import javax.persistence.*
@@ -13,6 +14,18 @@ enum class Intensity(val num: Int) {
     EXTREME(3)
 }
 
+data class UserDTO(
+    val firstName: String,
+    val lastName: String,
+    val bio: String,
+    val averagePace: Double,
+    val weeklyRuns: Int,
+    val intensity: Intensity,
+    val availability: MutableSet<Availability>,
+    val id: String,
+    val profilePic: String?,
+)
+
 @Entity(name = "RBUser")
 class User(
     var fullName: String,
@@ -20,6 +33,9 @@ class User(
     var averagePace: Double,
     var weeklyRuns: Int,
     var intensity: Intensity,
+    @Column(unique = true)
+    // @get:JsonIgnore
+    var auth0Id: String,
     var profilePic: String = "https://thispersondoesnotexist.com/image",
 
     @OneToMany(cascade = [CascadeType.ALL])

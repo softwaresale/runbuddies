@@ -12,8 +12,31 @@ class UserService(
 ) {
     fun getAll(): List<User> = userRepository.findAll()
     fun getById(id: String): User? = userRepository.findByIdOrNull(id)
+    fun getByAuth0Id(id: String): User? {
+        val opt = userRepository.findByAuth0Id(id)
+        return if (opt.isPresent)
+            opt.get()
+        else
+            null
+    }
     fun save(user: User) = userRepository.save(user)
     fun saveAll(users: Collection<User>): Collection<User> = userRepository.saveAll(users)
+
+    fun createUserFromDTO(dto: UserDTO, auth0Id: String): User {
+        val newUser = User(
+            fullName = dto.firstName + " " + dto.lastName,
+            auth0Id = auth0Id,
+            profilePic = dto.profilePic ?: "https://thispersondoesnotexist.com/image",
+            averagePace = dto.averagePace,
+            availability = dto.availability,
+            bio = dto.bio,
+            id = dto.id,
+            intensity = dto.intensity,
+            weeklyRuns = dto.weeklyRuns
+        )
+
+        return save(newUser)
+    }
 
     /**
      * Adds availability to an existing user

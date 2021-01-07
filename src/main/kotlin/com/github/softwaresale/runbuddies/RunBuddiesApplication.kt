@@ -12,7 +12,6 @@ fun main(args: Array<String>) {
     val context = runApplication<RunBuddiesApplication>(*args)
 
     // Load Sample data
-    // val sampleUsers = context.getBean("sampleUsers") as List<User>
     val sampleUsers = context.getBean("mockGeneratedUsers") as List<User>
     val userService = context.getBean(UserService::class.java)
     userService.saveAll(sampleUsers)
